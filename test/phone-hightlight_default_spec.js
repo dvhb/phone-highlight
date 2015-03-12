@@ -2,7 +2,7 @@ describe('PhoneHightlight with default options', function () {
 	var ph = null;
 
 	beforeEach(function () {
-		ph = new PhoneHightlight;
+		ph = new PhoneHighlight;
 	});
 
 	describe('#replace', function () {
@@ -42,15 +42,15 @@ describe('PhoneHightlight with default options', function () {
 		});
 
 		it('should return correct data from data attributes', function () {
-			var countryCode = '+7';
-			var cityCode = '3812';
-			$elm.data('countryCode', countryCode);
-			$elm.data('cityCode', cityCode);
+			var countrycode = '+7';
+			var citycode = '3812';
+			$elm.data('countrycode', countrycode);
+			$elm.data('citycode', citycode);
 			var result = ph.getCodesFromElm($elm);
-			assert.property(result, 'countryCode');
-			assert.equal(result.countryCode, countryCode);
-			assert.property(result, 'cityCode');
-			assert.equal(result.cityCode, cityCode);
+			assert.property(result, 'countrycode');
+			assert.equal(result.countrycode, countrycode);
+			assert.property(result, 'citycode');
+			assert.equal(result.citycode, citycode);
 		});
 	});
 
@@ -59,8 +59,8 @@ describe('PhoneHightlight with default options', function () {
 		var className = 'some-class';
 		var id = 'some-id';
 		var dataset = {
-			'cityCode': '3812',
-			'countryCode': '+7',
+			'citycode': '3812',
+			'countrycode': '+7',
 			'someAnatherProp': 'foo'
 		};
 
@@ -87,8 +87,8 @@ describe('PhoneHightlight with default options', function () {
 
 		it('should exclude codes from dataset', function () {
 			var resultDataset = ph.simulate($elm).data(); 
-			assert.notProperty(resultDataset, 'cityCode');
-			assert.notProperty(resultDataset, 'countryCode');
+			assert.notProperty(resultDataset, 'citycode');
+			assert.notProperty(resultDataset, 'countrycode');
 			assert.property(resultDataset, 'someAnatherProp');
 			assert.equal(resultDataset.someAnatherProp, 'foo');
 		});
