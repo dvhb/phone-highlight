@@ -1,0 +1,19 @@
+{
+  "name": "phone-hightlight",
+  "version": "0.1.0",
+  "authors": [
+    "Artem Pavlov <tema@temapavloff.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "mocha": "~2.2.1",
+    "jquery": "~2.1.3"
+  }
+}
