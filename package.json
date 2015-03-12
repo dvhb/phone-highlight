@@ -1,0 +1,20 @@
+{
+  "name": "phone-hightlight",
+  "version": "0.1.0",
+  "description": "Automatically adds tel: attribute for phone numbers on your html page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tel",
+    "telephone",
+    "hightlight"
+  ],
+  "author": "Artёm Pavlov <pavl0ff@ya.ru> (https://github.com/temapavloff)",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "~3.8.11",
+    "gulp-concat": "~2.5.2"
+  }
+}
