@@ -1,0 +1,2 @@
+(function phoneHightlightInit ($) {
+	'use strict';
