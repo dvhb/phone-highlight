@@ -59,7 +59,7 @@ PhoneHighlight.prototype.mergeCodes = function (codes) {
  * Creates A elm keeping attributes from source
  */
 PhoneHighlight.prototype.simulate = function ($elm) {
-	var attributes = ['id', 'className', 'rel', 'shape', 'target', 'style'];
+	var attributes = ['id', 'className', 'rel', 'shape', 'target'];
 	var $result = $('<a></a>');
 	var dataset = $elm.data();
 	delete dataset.countrycode;
@@ -72,6 +72,7 @@ PhoneHighlight.prototype.simulate = function ($elm) {
 	});
 	$result.data(dataset);
 	$result.text($elm.text());
+	$result.get(0).style.cssText = $elm.get(0).style.cssText;
 	return $result;
 };
 
