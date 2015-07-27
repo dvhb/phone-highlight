@@ -3,6 +3,8 @@
 jQuery plugin which helps you replace text phone numbers with
 user friendly `<a href="tel:...">` tag.
 
+Cheack out [demo](http://dvhbru.github.io/dvhb-phone-hightlight/)
+
 ### Basic usage
 
 At first, add `jquery.phone-highlight.js` into your `<head>`.
