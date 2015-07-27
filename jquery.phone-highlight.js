@@ -68,9 +68,7 @@ PhoneHighlight.prototype.parse = function ($elm) {
         if (item[0] === ' ') {
             item = item.substr(1);
         }
-        if (item[item.length - 1] === ' ') {
-            item = item.substr(0, item.length - 1);
-        }
+        item = item.replace(/[\s]+$/, '');
         return item;
     });
 
