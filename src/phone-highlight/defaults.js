@@ -1,5 +1,6 @@
 var defaults = {
-	countrycode: '',
-	citycode: '',
-	minLenWithouCodes: 7
+    countrycode: '',
+    citycode: '',
+    minLen: 6,
+    minLenWithouCodes: 7
 };

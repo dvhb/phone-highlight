@@ -1,6 +1,6 @@
 {
-  "name": "phone-hightlight",
-  "version": "0.1.0",
+  "name": "dvhb-phone-hightlight",
+  "version": "0.1.2",
   "description": "Automatically adds tel: attribute for phone numbers on your html page",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,6 @@
     "telephone",
     "hightlight"
   ],
-  "author": "Artёm Pavlov <pavl0ff@ya.ru> (https://github.com/temapavloff)",
   "license": "MIT",
   "devDependencies": {
     "gulp": "~3.8.11",

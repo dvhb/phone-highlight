@@ -1,13 +1,17 @@
 (function phoneHightlightInit ($) {
-	'use strict';
+    'use strict';
 
 var defaults = {
-	countrycode: '',
-	citycode: '',
-	minLenWithouCodes: 7
+    countrycode: '',
+    citycode: '',
+    minLen: 6,
+    minLenWithouCodes: 7
 };
+/*
+ * Constructor
+ */
 var PhoneHighlight = function (options) {
-	this.options = $.extend({}, defaults, options || {});
+    this.options = $.extend({}, defaults, options || {});
 };
 
 /*
@@ -15,8 +19,8 @@ var PhoneHighlight = function (options) {
  * except plus sign if it at the beginning of string
  */
 PhoneHighlight.prototype.replace = function (string) {
-	var firstSign = string[0] === '+' ? '+' : '';
-	return firstSign + string.replace(/[^\d]/g, '');	
+    var firstSign = string[0] === '+' ? '+' : '';
+    return firstSign + string.replace(/[^\d]/g, '');    
 };
 
 /*
@@ -24,89 +28,66 @@ PhoneHighlight.prototype.replace = function (string) {
  * or longer than minimal phone lenght without codes
  */
 PhoneHighlight.prototype.isMisformatted = function (string) {
-	if (string[0] === '+' || string.length > this.options.minLenWithoutCodes) {
-		return false;
-	}
-	return true;
+    if (string[0] === '+' || string.length > this.options.minLenWithoutCodes) {
+        return false;
+    }
+    return true;
 };
 
 /*
  * Concatinates codes with phone number
  */
 PhoneHighlight.prototype.addCodes = function (phone, countrycode, citycode) {
-	return '' + countrycode + citycode + phone;
+    return '' + countrycode + citycode + phone;
 };
 
 /*
- * Extracts county and city codes from given DOM-elements's data-attributes
+ * Creates regex based on min phone length
  */
-PhoneHighlight.prototype.getCodesFromElm = function ($elm) {
-	var attributes = ['countrycode', 'citycode'];
-	var result = {};
-	$.each(attributes, function (i, attr) {
-		var value = $elm.data(attr);
-		if (value) {
-			result[attr] = value;
-		}
-	});
-	return result;
-};
-
-/*
- * Merge codes from config with given
- */
-PhoneHighlight.prototype.mergeCodes = function (codes) {
-	var selfCodes = {
-		countrycode: this.options.countrycode,
-		citycode: this.options.citycode
-	};
-	return $.extend({}, selfCodes, codes);
-};
-
-/*
- * Creates A elm keeping attributes from source
- */
-PhoneHighlight.prototype.simulate = function ($elm) {
-	var attributes = ['id', 'className', 'rel', 'shape', 'target'];
-	var $result = $('<a></a>');
-	var dataset = $elm.data();
-	delete dataset.countrycode;
-	delete dataset.citycode;
-	$.each(attributes, function (i, attr) {
-		var value = $elm.prop(attr);
-		if (value) {
-			$result.prop(attr, value);
-		}
-	});
-	$result.data(dataset);
-	$result.text($elm.text());
-	$result.get(0).style.cssText = $elm.get(0).style.cssText;
-	return $result;
-};
+PhoneHighlight.prototype.getRegex = function (minlen) {
+    return new RegExp("\\s?[-+()\\s\\d]{" + minlen + ",}\\s?", "g");
+}
 
 /*
  * Main function
- * Parses given element and replaces it with A elm with tel: attribute
- * if neccesary
+ * Parses given element and replaces text phones with links
  */
 PhoneHighlight.prototype.parse = function ($elm) {
-	var $a = this.simulate($elm);
-	var phone = this.replace($elm.text());
+    var self = this;
+    var countrycode = $elm.data('countrycode') || self.options.countrycode;
+    var citycode = $elm.data('citycode') || self.options.citycode;
+    var minlenwithoutcodes = $elm.data('minlenwithoutcodes') || self.options.minLenWithoutCodes;
+    var minlen = $elm.data('minlen') || self.options.minLen;
+    var regex = self.getRegex(minlen);
+    var html = $elm.html();
+    var matches = html.match(regex);
+    if (matches == null) {
+        return;
+    }
+    matches = $.map(html.match(regex), function (item) {
+        if (item[0] === ' ') {
+            item = item.substr(1);
+        }
+        if (item[item.length - 1] === ' ') {
+            item = item.substr(0, item.length - 1);
+        }
+        return item;
+    });
 
-	if (this.isMisformatted(phone)) {
-		var elmCodes = this.getCodesFromElm($elm);
-		var resultCodes = this.mergeCodes(elmCodes);
-		phone = this.addCodes(phone, resultCodes.countrycode, resultCodes.citycode);
-	}
-
-	$a.attr('href', 'tel:' + phone);
-	$elm.replaceWith($a);
+    $.each(matches, function (index, item) {
+        var phone = self.replace(item);
+        if (self.isMisformatted(phone)) {
+            phone = self.addCodes(phone, countrycode, citycode);
+        }
+        html = html.replace(item, '<a href="tel:' + phone + '">' + item + '</a>');
+    });
+    $elm.html(html);
 };
 $.fn.phoneHighlight = function (options) {
-	var ph = new PhoneHighlight(options);
+    var ph = new PhoneHighlight(options || {});
 
-	this.each(function () {
-		ph.parse($(this));
-	});
+    this.each(function () {
+        ph.parse($(this));
+    });
 };
 })(window.$ || window.jQuery);
