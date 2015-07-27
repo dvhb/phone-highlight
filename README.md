@@ -7,24 +7,20 @@ user friendly `<a href="tel:...">` tag.
 
 At first, add `jquery.phone-highlight.js` into your `<head>`.
 
-Now you have to mark phone numbers somehow in your `HTML`,
-for example, wrap them with `<span class="phone"></span>`:
-
-```HTML
-Lorem ipsum dolor <span class="phone">+7 (3812) 78-66-44</span>
-```
-
 Then, put following into in you `main.js`:
 
 ```javascript
-$('.phone').phoneHighlight();
+$('p.containing-phones').phoneHighlight();
 ```
 
-Now if you open the page, plugin replace existing markup with the following:
+Plugin will replace text phones with `a` tag. 
 
 ```HTML
 Lorem ipsum dolor <a href="tel:+73812786644" class="phone">+7 (3812) 78-66-44</a>
 ```
+
+*NOTE!* Do not execute plugin on whole body or other huge/interactive parts of 
+the page! It may break other scripts all cause perfomance issues.
 
 ### Configuring
 
