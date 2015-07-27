@@ -5,6 +5,7 @@ var rename = require('gulp-rename');
 var runSequence = require('run-sequence');
 var karma = require('gulp-karma');
 var notify = require('gulp-notify');
+var ghPages = require('gulp-gh-pages');
 
 var output = 'jquery.phone-highlight.js';
 var outputMin = 'jquery.phone-highlight.min.js';
@@ -58,6 +59,12 @@ gulp.task('watch', function () {
 
 gulp.task('build', function () {
     runSequence('concat', 'test', 'uglify');
+});
+
+gulp.task('deploy', function() {
+    return gulp.src(['index.html', 'jquery.phone-highlight.js'])
+        .pipe(ghPages())
+        
 });
 
 gulp.task('default', ['watch']);
