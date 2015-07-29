@@ -75,3 +75,7 @@ appropriate `data` attributes:
 
 At firts, you have to install dependencies by running `npm install`
 and `bower install`. Now execute `npm run test` command.
+
+### License
+
+[MIT License](./LICENSE) © [dvhb](https://github.com/dvhbru)
