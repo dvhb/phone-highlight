@@ -2,11 +2,15 @@
 <html>
 <head>
     <title></title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/mobile-detect.js/1.2.1/mobile-detect.min.js"></script>
     <script src="./jquery.phone-highlight.js"></script>
     <script>
         $(function () {
-            $('.phones').phoneHighlight();
+            var md = new MobileDetect(window.navigator.userAgent);
+            if (md.mobile()) {
+                $('.phones').phoneHighlight();
+            }
         })
     </script>
 </head>
