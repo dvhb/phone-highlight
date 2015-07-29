@@ -36,7 +36,7 @@ Lorem ipsum dolor <a href="tel:+73812786644" class="phone">+7 (3812) 78-66-44</a
 ```
 
 *NOTE!* Do not execute plugin on whole body or other huge/interactive parts of 
-the page! It may break other scripts all cause perfomance issues.
+the page! It may break other scripts or cause perfomance issues.
 
 ### Configuring
 
