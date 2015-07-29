@@ -40,7 +40,7 @@ the page! It may break other scripts or cause perfomance issues.
 
 ### Configuring
 
-Plugin have 3 options which can be passed into plugin call:
+Plugin have 3 options which can be passed into its call:
 
 ```javascript
 $('.phone').phoneHighlight({
