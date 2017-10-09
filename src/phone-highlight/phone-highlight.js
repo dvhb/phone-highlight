@@ -36,7 +36,7 @@ PhoneHighlight.prototype.addCodes = function (phone, countrycode, citycode) {
  * Creates regex based on min phone length
  */
 PhoneHighlight.prototype.getRegex = function (minlen) {
-    return new RegExp("\\s?[-+()\\s\\d]{" + minlen + ",}\\s?", "g");
+    return new RegExp("(\<a.*>)?\\s?[-+()\\s\\d]{" + minlen + ",}\\s?", "g");
 }
 
 /*
@@ -64,6 +64,8 @@ PhoneHighlight.prototype.parse = function ($elm) {
     });
 
     $.each(matches, function (index, item) {
+        if (item.indexOf('href') > -1) return;
+        if (!item.trim()) return;
         var phone = self.replace(item);
         if (self.isMisformatted(phone)) {
             phone = self.addCodes(phone, countrycode, citycode);

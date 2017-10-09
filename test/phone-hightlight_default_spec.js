@@ -17,6 +17,14 @@ describe('PhoneHightlight with default options', function () {
             var expectedString = '+73812128644';
             assert.equal(ph.replace(testString), expectedString);
         });
+
+        it('should not replace phone that already a link', function () {
+            var testString = '<p><a href="tel:+7 (3812) 12-86-44">+7 (3812) 12-86-44</a></p>';
+            var $testElm = $(testString);
+            var expectedString = '<a href="tel:+7 (3812) 12-86-44">+7 (3812) 12-86-44</a>';
+            ph.parse($testElm);
+            assert.equal($testElm.html(), expectedString);
+        });
     });
 
     describe('#isMisformatted', function () {
