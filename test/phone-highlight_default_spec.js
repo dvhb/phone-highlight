@@ -1,4 +1,4 @@
-describe('PhoneHightlight with default options', function () {
+describe('Phonehighlight with default options', function () {
     var ph = null;
 
     beforeEach(function () {

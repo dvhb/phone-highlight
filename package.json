@@ -1,6 +1,6 @@
 {
-  "name": "@dvhb/phone-hightlight",
-  "version": "0.1.4",
+  "name": "@dvhb/phone-highlight",
+  "version": "0.1.5",
   "description": "Automatically adds tel: attribute for phone numbers on your html page",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   "keywords": [
     "tel",
     "telephone",
-    "hightlight"
+    "highlight"
   ],
   "license": "MIT",
   "devDependencies": {

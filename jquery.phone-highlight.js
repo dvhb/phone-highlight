@@ -1,4 +1,4 @@
-(function phoneHightlightInit ($) {
+(function phoneHighlightInit ($) {
     'use strict';
 
 var defaults = {

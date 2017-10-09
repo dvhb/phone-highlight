@@ -1,4 +1,4 @@
-# jQuery Phone Hightlight
+# jQuery Phone highlight
 
 jQuery plugin which helps you replace text phone numbers with `<a href="tel:...">` tag.
 
@@ -8,7 +8,7 @@ but want to keep text phone numbers in desktop version.
 This plugin don't have library for detecting mobiles devices as a hard dependency.
 You are free to use your favorite one. For example [mobile-detect.js](https://github.com/hgoebl/mobile-detect.js)
 
-Check out [demo](http://dvhbru.github.io/phone-hightlight/) (open from mobile device or use emulation).
+Check out [demo](http://dvhbru.github.io/phone-highlight/) (open from mobile device or use emulation).
 
 ### Basic usage
 
