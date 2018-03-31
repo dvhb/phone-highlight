@@ -4,7 +4,7 @@
   "description": "Automatically adds tel: attribute for phone numbers on your html page",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dvhbru/phone-highlight.git"
+    "url": "https://github.com/dvhb/phone-highlight.git"
   },
   "main": "jquery.phone-highlight.js",
   "scripts": {

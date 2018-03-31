@@ -8,7 +8,7 @@ but want to keep text phone numbers in desktop version.
 This plugin don't have library for detecting mobiles devices as a hard dependency.
 You are free to use your favorite one. For example [mobile-detect.js](https://github.com/hgoebl/mobile-detect.js)
 
-Check out [demo](http://dvhbru.github.io/phone-highlight/) (open from mobile device or use emulation).
+Check out [demo](http://dvhb.github.io/phone-highlight/) (open from mobile device or use emulation).
 
 ### Basic usage
 
